@@ -8,9 +8,15 @@ This package implenments a simhash indexer for lots of documents, to find simila
 
 Code specific to this project is covered by [The MIT License](http://opensource.org/licenses/MIT)
 
+
+Usage
+=====
+The library is pretty simple to use, see z_test.py
+
+
 Issues
 =======
-Why diffrent result with diffrent build tools?
+Why diffrent result with diffrent build tools? If cmake set CMAKE_BUILD_TYPE as 'Debug', the result would be diffrent with python setup.py build. So, replace 'Debug' with 'Release'. I don't know why 'Debug' acts different yet.
 
 test step:
 > (a) cmake build:
@@ -29,9 +35,3 @@ test step:
 
 
 Why diffrent?!!!
-
-
-
-Usage
-=====
-The library is pretty simple to use, see z_test.py
