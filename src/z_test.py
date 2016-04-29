@@ -9,7 +9,9 @@ def test():
     vec = simhashindex.stl_vector_string()
     vec.append('abc')
     sh = si.simhash_vec(vec)
-    print sh
+    print 'simhash:', sh
+    fh = si.farmhash('abc')
+    print 'farmhash:', fh
 
 
 if __name__ == '__main__':
