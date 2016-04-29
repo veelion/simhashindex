@@ -14,7 +14,22 @@
 #include "farmhash.h"
 #include "simhashindex.h"
 
-#define hamdist(x, y) __builtin_popcountll((x)^(y))
+#define FARMHASH_DEBUG 0
+
+// #define hamdist(x, y) __builtin_popcountll((x)^(y))
+#define hamdist(x, y) popcount((x)^(y))
+
+int popcount(uint64_t n){
+    //unsigned int* p = (unsigned int *) &n;
+    //return assembly_popcnt(p[0]) + assembly_popcnt(p[1]);
+    n -= (n>>1) & 0x55555555;
+    n  = (n & 0x33333333) + ((n>>2) & 0x33333333);
+    n  = ((n>>4) + n) & 0x0F0F0F0F;
+    n += n>>8;
+    n += n>>16;
+    return n & 0x0000003F;
+}
+
 
 using namespace std;
 using namespace NAMESPACE_FOR_HASH_FUNCTIONS;
@@ -90,6 +105,11 @@ bool SimhashIndex::split_to_keys(hash_t simhash, key_t* keys) {
 
 SimhashIndex::hash_t SimhashIndex::simhash_txt(const string &text) {
     return 0;
+}
+
+
+SimhashIndex::hash_t SimhashIndex::farmhash(const string &str) {
+    return Hash64(str.c_str(), str.size());
 }
 
 

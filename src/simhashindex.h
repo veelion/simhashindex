@@ -31,6 +31,8 @@ class SimhashIndex{
         virtual ~SimhashIndex();
 
         bool clear();
+
+        hash_t farmhash(const std::string &str);
         hash_t simhash_txt(const std::string &text);
         hash_t simhash_vec(const std::vector<std::string> &words);
 
