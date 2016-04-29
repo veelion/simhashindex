@@ -43,7 +43,14 @@ BOOST_PYTHON_MODULE(simhashindex) {
                 "Definition: get_similar(simhash, docids)\n"
                 "PARAM-1: [simhash] input document's simhash\n"
                 "PARAM-2: [docids] a set of docid_t to save the similars\n"
-                "RETURN : the count of similars"
+                "RETURN : the count of similars\n"
+            )
+        .def(
+                "farmhash", &SimhashIndex::farmhash,
+                "Function: calculate 64-bit farmhash of a string\n"
+                "Definition: farmhash(string)\n"
+                "PARAM-1: [string] the string inputted\n"
+                "RETURN: the 64-bit simhash value\n"
             )
         .enable_pickling()
         ;
